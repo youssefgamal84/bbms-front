@@ -33,13 +33,13 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="date" class="text-danger h4">Date</label>
-            <input type="date" required #day="ngModel" [class.is-invalid]="day.invalid && day.touched" name="day"
-            [(ngModel)]="userModel.day" class="form-control form-control-lg" id="date">
+            <input type="date" required #day="ngModel" [class.is-invalid]="day.invalid && day.touched" name="day" [(ngModel)]="userModel.day"
+              class="form-control form-control-lg" id="date">
           </div>
           <div class="form-group col-md-6">
             <label for="time" class="text-danger h4">Select Appointment Time</label>
-            <select required #hour="ngModel" [class.is-invalid]="hour.invalid && hour.touched" class="form-control"
-            name="hour" [(ngModel)]="userModel.hour" class="form-control form-control-lg" id="time">
+            <select required #hour="ngModel" [class.is-invalid]="hour.invalid && hour.touched" class="form-control" name="hour" [(ngModel)]="userModel.hour"
+              class="form-control form-control-lg" id="time">
               <option [ngValue]="9" default>9 am</option>
               <option [ngValue]="10">10 am</option>
               <option [ngValue]="11">11 am</option>
@@ -52,6 +52,14 @@
           </div>
         </div>
 
-        <button type="submit"
-        [disabled]="appointmentForm.form.invalid" class="btn btn-outline-danger btn-lg mt-3">Submit</button>
+        <button type="submit" [disabled]="appointmentForm.form.invalid" class="btn btn-outline-danger btn-lg mt-3">Submit</button>
       </form>
+
+
+      <div class="alert alert-success m-3" role="alert" *ngIf="success">
+        Your Appointment has been made! Please attend at time.
+      </div>
+
+      <div class="alert alert-danger m-3" *ngIf="errorMessage" role="alert">
+        {{errorMessage}}
+      </div>

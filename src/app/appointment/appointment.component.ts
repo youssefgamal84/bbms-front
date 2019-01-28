@@ -13,6 +13,7 @@ export class AppointmentComponent implements OnInit {
   constructor(private appointmentService: AppointmentService) { }
   submitted = false;
   success = null;
+  errorMessage = null;
   ngOnInit() {
   }
 
@@ -24,10 +25,13 @@ export class AppointmentComponent implements OnInit {
         data => {
           console.log('success', data);
           this.success = true;
+          this.errorMessage = null;
         },
         error => {
           console.error('error !', error);
           this.success = false;
+          this.errorMessage = error.error.errorMessage;
+          console.log(error.errorMessage);
         }
 
       )
