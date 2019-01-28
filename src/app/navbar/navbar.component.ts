@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateService } from '../authenticate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  private job: number = null;
+  constructor(private authService: AuthenticateService) { }
 
   ngOnInit() {
+    this.job = this.authService._job;
+    console.log("Job from serivce", this.job);
+    this.authService.getJob().subscribe(job => {
+      this.job = job;
+      console.log(job);
+    });
   }
 
 }
