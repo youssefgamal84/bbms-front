@@ -8,7 +8,9 @@ const routes: Routes = [
   { path: "appointment", component: AppointmentComponent },
   { path: "add-donor", component: DonorComponent },
   { path: "add-bag", component: BagComponent },
-  { path: "bags", component: BagsComponent }
+  { path: "bags", component: BagsComponent },
+  { path: "test-result", component: TestComponent },
+  { path: "unsampled", component: ExpiredBagsComponent }
 
 ];
 
@@ -24,6 +26,9 @@ import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { BagsComponent } from './bags/bags.component';
 import { CommonModule } from "@angular/common";
+import { TestComponent } from './test/test.component';
+import { DonationsComponent } from './donations/donations.component';
+import { ExpiredBagsComponent } from './expired-bags/expired-bags.component';
 
 
 
@@ -36,7 +41,10 @@ import { CommonModule } from "@angular/common";
     AppointmentComponent,
     DonorComponent,
     BagComponent,
-    BagsComponent
+    BagsComponent,
+    TestComponent,
+    DonationsComponent,
+    ExpiredBagsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

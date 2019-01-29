@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../authenticate.service';
 import { LoginInfo } from '../LoginInfo';
+import { BagService } from '../bag.service';
+import { DonorService } from '../donor.service';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +14,10 @@ export class LoginComponent implements OnInit {
   success = null;
   errorMessage = null;
 
-  constructor(private authService: AuthenticateService) { }
+  constructor(private authService: AuthenticateService, private bagService: BagService, private donorService: DonorService) { }
 
   ngOnInit() {
-    
+
     this.authService.getAuthStatusListener().subscribe(status => { this.success = status; })
   }
 
@@ -25,6 +27,8 @@ export class LoginComponent implements OnInit {
       this.success = true;
       this.errorMessage = null;
       this.authService.setToken(data.token);
+      this.bagService.setToken(data.token);
+      this.donorService.setToken(data.token);
       this.authService.setName(data.name);
       this.authService.setAuthStatus(true);
       this.authService.setJob(data.job);
