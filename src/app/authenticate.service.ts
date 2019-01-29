@@ -10,15 +10,17 @@ export class AuthenticateService {
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private name = new Subject<string>();
+  private token$ = new Subject<string>();
   private job = new Subject<number>();
   public _name: string = null;
   public _job: number = null;
 
   getToken() {
-    return this.token;
+    return this.token$.asObservable();
   }
 
   setToken(token: string) {
+    this.token$.next(token);
     this.token = token;
   }
 

@@ -1,0 +1,52 @@
+<section id="login" class="py-5 mt-4">
+    <div class="container">
+    <!--Title-->   
+      <div class="row">
+        <div class="col text-center">
+          <h1 class="display-4 text-uppercase mb-4 font-weight-bold" style="color:#FE4A49">
+            <strong>Blood Bag Form</strong>
+          </h1>
+          <div class="title-underline" style="background-color:#FE4A49"></div>
+        </div>
+      </div>
+    <!--end of title-->
+        <!--form-->
+          <div class="card card-body p-5 mt-4 bg-white" style="width:800px">
+          
+          <form #bagForm ="ngForm"  (ngSubmit)="onSubmit()" novalidate>
+              <div class="form-group">
+                <label for="inputAddress" class="text-danger h4">Type</label>
+                <select type="text" #type="ngModel" name="type" [(ngModel)]="bagModel.type" class="form-control form-control-lg" id="type" placeholder="A">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="AB">AB</option>
+                    <option value="O">O</option>
+                  </select>
+                </div>
+              <div class="form-group">
+                  <label for="inputEmail" class="text-danger h4">Donor Social Security Number</label>
+                  <input type="text" #dssn="ngModel" name="dssn" [(ngModel)]="bagModel.dssn" class="form-control form-control-lg" id="dssn" placeholder="123">
+                </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="rh" name="rh"  class="text-danger h4">RH</label>
+                  <select type="number" #rh="ngModel" name="rh" [(ngModel)]="bagModel.rh" class="form-control form-control-lg" id="rh" placeholder="Positive">
+                    <option [ngValue]="0">Negative</option>
+                    <option [ngValue]="1">Positive</option>
+                  </select>
+                  </div>
+              </div> 
+              <button type="submit" class="btn btn-outline-danger btn-lg mt-3">Submit</button>
+            </form>
+            <div class="alert alert-success m-3" role="alert" *ngIf="success">
+              New Bag has been added.
+            </div>
+      
+            <div class="alert alert-danger m-3" *ngIf="errorMessage" role="alert">
+              {{errorMessage}}
+            </div>
+          <!--end of form-->
+    </div>
+    </div>
+  </section>
+ <!--end of donation form-->

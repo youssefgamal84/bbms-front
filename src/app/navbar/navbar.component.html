@@ -14,9 +14,14 @@
       <li class="nav-item" *ngIf="!job"><a href="home#who" class="nav-link"> Who can donate? </a></li>
       <li class="nav-item" *ngIf="!job"><a href="home#contact" class="nav-link"> Contact </a></li>
       <li class="nav-item" *ngIf="!job"><a routerLink="/login" class="nav-link"> Log In </a></li>
-      <li class="nav-item" *ngIf="job==1"><a routerLink="donor" class="nav-link"> Add Donor </a></li>
+      <li class="nav-item" *ngIf="job==1"><a routerLink="add-donor" class="nav-link"> Add Donor </a></li>
+      <li class="nav-item" *ngIf="job==1"><a routerLink="add-bag" class="nav-link"> Add Bag </a></li>
+      <li class="nav-item" *ngIf="job==1"><a routerLink="bags" class="nav-link"> Blood Bags </a></li>
+
 
     </ul>
+
+    
   </div>
 
 </nav>

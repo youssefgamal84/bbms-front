@@ -1,0 +1,81 @@
+<section id="login" class="py-5 mt-4">
+  <div class="container">
+    <!--Title-->
+    <div class="row">
+      <div class="col text-center">
+        <h1 class="display-4 text-uppercase mb-4 font-weight-bold" style="color:#FE4A49">
+          <strong>Donation Form</strong>
+        </h1>
+        <div class="title-underline" style="background-color:#FE4A49"></div>
+      </div>
+    </div>
+    <!--end of title-->
+    <!--form-->
+    <div class="card card-body p-5 mt-4 bg-white" style="width:800px">
+
+      <form #donorForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="form-group ">
+          <label for="inputFname" class="text-danger h4">Name:</label>
+          <input type="text" #name="ngModel" name="name" [(ngModel)]="donorModel.name" class="form-control form-control-lg" id="inputFname"
+            placeholder="First Name">
+        </div>
+
+        <div class="form-group">
+          <label for="inputAddress" class="text-danger h4">Address</label>
+          <input type="text" #address="ngModel" name="address" [(ngModel)]="donorModel.address" class="form-control form-control-lg"
+            id="inputAddress" placeholder="12 St. Main">
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="text-danger h4">Email</label>
+          <input type="email" #email="ngModel" name="email" [(ngModel)]="donorModel.email" class="form-control form-control-lg" id="inputEmail"
+            placeholder="siood@siood.com">
+        </div>
+        <div class="form-group">
+          <label for="num" class="text-danger h4">Telephone No.</label>
+          <input type="text" #pnumber="ngModel" name="pnumber" [(ngModel)]="donorModel.telephone" class="form-control form-control-lg"
+            id="num" placeholder="Telephone Number">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="sex" name="sex" class="text-danger h4">Sex</label>
+            <select type="number" #sex="ngModel" name="sex" [(ngModel)]="donorModel.sex" class="form-control form-control-lg" id="age"
+              placeholder="Male">
+              <option [ngValue]="0">Male</option>
+              <option [ngValue]="1">Female</option>
+            </select>
+          </div>
+          <div class="form-group col-md-9">
+            <label for="id" class="text-danger h4">Social Security Number</label>
+            <input type="number" #ssn="ngModel" name="ssn" [(ngModel)]="donorModel.ssn" class="form-control form-control-lg" id="id"
+              placeholder="1234567">
+          </div>
+        </div>
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="date" class="text-danger h4">Birth Date</label>
+              <input type="date" #bdate="ngModel" name="bdate" [(ngModel)]="donorModel.bdate" class="form-control form-control-lg" id="date">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="quantity" class="text-danger h4">Weight</label>
+              <input type="number" #weight="ngModel" name="weight" [(ngModel)]="donorModel.weight" class="form-control form-control-lg"
+                id="quantity" placeholder="">
+            </div>
+          </div>
+        </form>
+        <button type="submit" class="btn btn-outline-danger btn-lg mt-3">Submit</button>
+      </form>
+
+      <div class="alert alert-success m-3" role="alert" *ngIf="success">
+        New Donor has been added.
+      </div>
+
+      <div class="alert alert-danger m-3" *ngIf="errorMessage" role="alert">
+        {{errorMessage}}
+      </div>
+      <!--end of form-->
+    </div>
+  </div>
+</section>
+<!--end of donation form-->
