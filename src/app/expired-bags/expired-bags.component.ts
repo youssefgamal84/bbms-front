@@ -4,8 +4,7 @@ import { BagService } from '../bag.service';
 
 @Component({
   selector: 'app-bags',
-  templateUrl: './expired-bags.component.html',
-  styleUrls: ['./expired-bags.component.css']
+  templateUrl: './expired-bags.component.html'
 })
 export class ExpiredBagsComponent implements OnInit {
   public cards: Bag[];

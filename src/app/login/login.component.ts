@@ -3,6 +3,7 @@ import { AuthenticateService } from '../authenticate.service';
 import { LoginInfo } from '../LoginInfo';
 import { BagService } from '../bag.service';
 import { DonorService } from '../donor.service';
+import { UserService } from '../add-user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,12 @@ export class LoginComponent implements OnInit {
   success = null;
   errorMessage = null;
 
-  constructor(private authService: AuthenticateService, private bagService: BagService, private donorService: DonorService) { }
+  constructor(private authService: AuthenticateService,
+    private bagService: BagService,
+    private donorService: DonorService,
+    private userService: UserService) { }
 
   ngOnInit() {
-
     this.authService.getAuthStatusListener().subscribe(status => { this.success = status; })
   }
 
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
       this.authService.setToken(data.token);
       this.bagService.setToken(data.token);
       this.donorService.setToken(data.token);
+      this.userService.setToken(data.token);
       this.authService.setName(data.name);
       this.authService.setAuthStatus(true);
       this.authService.setJob(data.job);
